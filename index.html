@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetYoked - Extreme Bodybuilding Game | Build Your Ultimate Physique</title>
+    <meta name="description" content="GetYoked is an exciting roguelike deckbuilder game about becoming an ABSOLUTE UNIT. Grow and sculpt your body to win competitions in this addictive bodybuilding game.">
+    <meta name="keywords" content="getyoked, get yoked, bodybuilding game, muscle building game, deckbuilder game, roguelike game">
+    <link rel="canonical" href="https://getyoked.online/">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="GetYoked - Extreme Bodybuilding Game">
+    <meta property="og:description" content="Build your ultimate physique in this addictive bodybuilding deckbuilder game.">
+    <meta property="og:image" content="https://img.itch.zone/aW1nLzE5NDg4MDY1Ln">
+    <meta property="og:url" content="https://getyoked.online/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GetYoked - Extreme Bodybuilding Game">
+    <meta name="twitter:description" content="Build your ultimate physique in this addictive bodybuilding deckbuilder game.">
+    <meta name="twitter:image" content="https://img.itch.zone/aW1nLzE5NDg4MDY1Ln">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            dark: '#1D1D1F',
+                            gray: '#86868B',
+                            blue: '#FF9500',
+                            highlight: '#FFAC33',
+                            black: '#000000',
+                            white: '#FFFFFF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1D1D1F;
+            color: #FFFFFF;
+        }
+        
+        .game-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            background-color: #000000;
+        }
+        
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 51;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @media (min-width: 768px) {
+            .game-iframe {
+                width: 960px;
+                height: 644px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="relative">
+        <img src="images/0eezqm.png" alt="GetYoked Game Banner" class="w-full h-auto max-h-[50vh] object-cover object-center">
+        <div class="absolute inset-0 bg-gradient-to-t from-apple-black to-transparent"></div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 max-w-5xl">
+        <h1 class="text-4xl md:text-6xl font-bold text-center mb-6 text-apple-white">GetYoked: Extreme Bodybuilding</h1>
+        
+        <p class="text-xl md:text-2xl text-center mb-10 text-apple-gray">A roguelike deckbuilder game about becoming an <span class="text-apple-highlight font-bold">ABSOLUTE UNIT</span>.</p>
+        
+        <!-- Play Button -->
+        <div class="flex justify-center mb-16">
+            <button id="play-button" class="bg-apple-blue hover:bg-apple-highlight text-white text-xl font-bold py-4 px-10 rounded-full transition duration-300 transform hover:scale-105 shadow-lg">
+                PLAY THE GAME
+            </button>
+        </div>
+        
+        <!-- Game Screenshots -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-apple-white border-b border-apple-gray pb-2">Gameplay in Action</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
+                    <img src="images/HTk6t_.gif" alt="GetYoked Gameplay Screenshot 3" class="w-full h-auto rounded">
+                </div>
+                
+                <div class="bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
+                    <img src="images/FnARPk.gif" alt="GetYoked Gameplay Screenshot 4" class="w-full h-auto rounded">
+                </div>
+
+                <div class="bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
+                    <img src="images/fz4nxT.gif" alt="GetYoked Gameplay Screenshot 2" class="w-full h-auto rounded">
+                </div>
+                
+                <div class="bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
+                    <img src="images/Ho9Ba3.gif" alt="GetYoked Gameplay Screenshot 1" class="w-full h-auto rounded">
+                </div>
+                
+                
+                
+               
+            </div>
+        </section>
+        
+        <!-- Game Features -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-apple-white border-b border-apple-gray pb-2">Game Features</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-apple-dark p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-apple-highlight">Grow Your Physique</h3>
+                    <p class="text-apple-gray">Grow and sculpt your body to win competitions. Reach the minimum gains required to win and become the ultimate bodybuilder. Play workout cards to get Gains, e.g., play Arms to grow those guns.</p>
+                </div>
+                
+                <div class="bg-apple-dark p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-apple-highlight">Strategic Deckbuilding</h3>
+                    <p class="text-apple-gray">Don't push too hard — too much Fatigue can lead to Injury. Play rest and supplement cards to increase your Gains or decrease muscle Fatigue. Build your perfect deck to maximize your gains.</p>
+                </div>
+                
+                <div class="bg-apple-dark p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-apple-highlight">Become a Specialist</h3>
+                    <p class="text-apple-gray">Really into your Glutes? No problem, become a Glutes purist and get those buns hun. Focus on specific muscle groups to create your unique bodybuilding strategy and dominate the competition.</p>
+                </div>
+                
+                <div class="bg-apple-dark p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-apple-highlight">Roguelike Progression</h3>
+                    <p class="text-apple-gray">The journey to Gains-Town is difficult. Make smart decisions on your journey to become an ABSOLUTE UNIT. Each run offers new challenges and opportunities to perfect your physique.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Game Description -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-apple-white border-b border-apple-gray pb-2">About GetYoked</h2>
+            
+            <div class="bg-apple-dark p-8 rounded-lg shadow-lg">
+                <p class="text-apple-gray mb-4">GetYoked is an addictive roguelike deckbuilder game where you take on the role of an aspiring bodybuilder. Your goal is to build the perfect physique by strategically playing workout cards, managing fatigue, and making smart decisions about your training regimen.</p>
+                
+                <p class="text-apple-gray mb-4">In GetYoked, you'll face increasingly difficult competitions that require specific muscle development. Will you become a balanced bodybuilder with proportional development, or will you specialize in certain muscle groups to create a unique physique?</p>
+                
+                <p class="text-apple-gray">The game features intuitive controls, engaging gameplay mechanics, and a progression system that keeps you coming back for more. With each run, you'll learn new strategies and unlock new cards to help you on your journey to becoming the ultimate bodybuilding champion.</p>
+            </div>
+        </section>
+        
+        <!-- How to Play -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-apple-white border-b border-apple-gray pb-2">How to Play</h2>
+            
+            <div class="bg-apple-dark p-8 rounded-lg shadow-lg">
+                <ol class="list-decimal list-inside space-y-4 text-apple-gray">
+                    <li><span class="font-bold text-apple-white">Build Your Deck:</span> Collect workout cards, supplements, and rest strategies to create your perfect training regimen.</li>
+                    <li><span class="font-bold text-apple-white">Manage Fatigue:</span> Balance intense workouts with proper rest to avoid injury and maximize gains.</li>
+                    <li><span class="font-bold text-apple-white">Win Competitions:</span> Meet the minimum muscle requirements for each competition to progress through the game.</li>
+                    <li><span class="font-bold text-apple-white">Strategic Choices:</span> Decide which muscle groups to prioritize based on competition requirements and your personal strategy.</li>
+                    <li><span class="font-bold text-apple-white">Unlock New Cards:</span> As you progress, you'll unlock new workout cards and supplements to enhance your training options.</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-apple-black py-8">
+        <div class="container mx-auto px-4 text-center text-apple-gray">
+            <p>&copy; 2025 GetYoked Game. All Rights Reserved.</p>
+            <p class="mt-2">Experience the ultimate bodybuilding game at <a href="https://getyoked.online" class="text-apple-highlight hover:underline">getyoked.online</a></p>
+        </div>
+    </footer>
+    
+    <!-- Game Container -->
+    <div id="game-container" class="game-container">
+        <button id="close-button" class="close-button">&times;</button>
+        <iframe id="game-iframe" class="game-iframe" src="" allowfullscreen></iframe>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const playButton = document.getElementById('play-button');
+            const gameContainer = document.getElementById('game-container');
+            const gameIframe = document.getElementById('game-iframe');
+            const closeButton = document.getElementById('close-button');
+            
+            playButton.addEventListener('click', function() {
+                gameContainer.style.display = 'block';
+                gameIframe.src = 'https://html-classic.itch.zone/html/13171930/Web/index.html';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when game is open
+            });
+            
+            closeButton.addEventListener('click', function() {
+                gameContainer.style.display = 'none';
+                gameIframe.src = ''; // Clear the iframe source
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        });
+    </script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "GetYoked",
+        "description": "A roguelike deckbuilder game about extreme bodybuilding and becoming an ABSOLUTE UNIT.",
+        "genre": ["Roguelike", "Card Game", "Deckbuilder", "Simulation"],
+        "url": "https://getyoked.online",
+        "image": "https://img.itch.zone/aW1nLzE5NDg4MDY1Ln",
+        "playMode": "SinglePlayer",
+        "applicationCategory": "Game",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</body>
+</html>
