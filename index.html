@@ -24,25 +24,15 @@
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS和自定义样式 -->
+    <link rel="stylesheet" href="css/tailwind.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    
+    <!-- 调试脚本 -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        apple: {
-                            dark: '#1D1D1F',
-                            gray: '#86868B',
-                            blue: '#FF9500',
-                            highlight: '#FFAC33',
-                            black: '#000000',
-                            white: '#FFFFFF',
-                        }
-                    }
-                }
-            }
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('页面已加载，CSS应该已经生效');
+        });
     </script>
     
     <style>
@@ -50,6 +40,204 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #1D1D1F;
             color: #FFFFFF;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* 添加全局动画效果 */
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(255, 165, 0, 0.1); }
+            50% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.3); }
+            100% { box-shadow: 0 0 5px rgba(255, 165, 0, 0.1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* 标题动画效果 */
+        h1 {
+            background: linear-gradient(45deg, #FFA500, #FF8C00, #FFD700);
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* 特性卡片样式优化 */
+        .bg-apple-dark {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .bg-apple-dark:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 165, 0, 0.3);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+        }
+        
+        /* 游戏截图容器优化 */
+        .game-screenshot {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .game-screenshot:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+        }
+        
+        .game-screenshot img {
+            transition: all 0.3s ease;
+        }
+        
+        .game-screenshot:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 按钮样式优化 */
+        #play-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #FF8C00, #FFA500);
+            border: none;
+        }
+        
+        #play-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+        
+        #play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+        }
+        
+        #play-button:hover::before {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+        
+        #play-button:active {
+            transform: scale(1.02);
+            background: linear-gradient(45deg, #FFA500, #FFD700);
+            box-shadow: 0 0 30px rgba(255, 165, 0, 0.6);
+        }
+        
+        /* 间距优化 */
+        .container {
+            padding: 2rem 1rem;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        .grid {
+            gap: 2rem;
+        }
+        
+        /* 确保About部分在宽屏幕上显示为三列 */
+        @media (min-width: 1024px) {
+            .about-grid {
+                display: flex;
+                flex-wrap: nowrap;
+            }
+            
+            .about-column {
+                flex: 1;
+                margin: 0 0.75rem;
+            }
+            
+            .about-column:first-child {
+                margin-left: 0;
+            }
+            
+            .about-column:last-child {
+                margin-right: 0;
+            }
+        }
+        
+        /* 中等屏幕下显示为2列 */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* 小屏幕下显示为1列 */
+        @media (max-width: 767px) {
+            .about-grid {
+                display: block;
+            }
+            
+            .about-column {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* 确保页面内容不会溢出，防止横向滚动条 */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* 文字样式优化 */
+        .text-apple-highlight {
+            background: linear-gradient(45deg, #FFA500, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        
+        /* 分隔线样式 */
+        .heading-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            margin: 1.5rem 0;
+        }
+        
+        /* 游戏容器样式优化 */
+        .game-container {
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .close-button {
+            transition: all 0.3s ease;
+        }
+        
+        .close-button:hover {
+            transform: rotate(90deg);
+            background-color: rgba(255, 165, 0, 0.2);
         }
         
         .game-container {
@@ -69,24 +257,6 @@
             border: none;
         }
         
-        .close-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 51;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
         @media (min-width: 768px) {
             .game-iframe {
                 width: 960px;
@@ -97,13 +267,83 @@
                 transform: translate(-50%, -50%);
             }
         }
+        
+        /* 优化How to Play部分间距 */
+        .how-to-play-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .how-to-play-list li {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 165, 0, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .how-to-play-list li:hover {
+            transform: translateX(10px);
+            background: rgba(255, 165, 0, 0.15);
+        }
+        
+        .how-to-play-list li span {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 移除About和How to Play部分的炫光效果 */
+        .bg-apple-dark.no-glow {
+            border: none;
+            box-shadow: none;
+        }
+        
+        .bg-apple-dark.no-glow:hover {
+            transform: none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+        
+        /* 添加左侧橙色装饰线 */
+        .orange-left-border {
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .orange-left-border::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 6px;
+            background: linear-gradient(to bottom, #FFA500, #FF8C00);
+            border-radius: 3px;
+        }
+        
+        /* 添加顶部橙色装饰线 */
+        .orange-top-border {
+            position: relative;
+            padding-top: 20px;
+        }
+        
+        .orange-top-border::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #FFA500, #FF8C00);
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="relative">
         <img src="images/0eezqm.png" alt="GetYoked Game Banner" class="w-full h-auto max-h-[50vh] object-cover object-center">
-        <div class="absolute inset-0 bg-gradient-to-t from-apple-black to-transparent"></div>
+        <div class="banner-gradient-overlay"></div>
     </header>
     
     <!-- Main Content -->
@@ -121,34 +361,32 @@
         
         <!-- Game Screenshots -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 text-apple-white border-b border-apple-gray pb-2">Gameplay in Action</h2>
+            <h2 class="text-3xl font-bold mb-6 text-apple-white">Gameplay in Action</h2>
+            <div class="heading-divider"></div>
             
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
+                <div class="game-screenshot bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
                     <img src="images/HTk6t_.gif" alt="GetYoked Gameplay Screenshot 3" class="w-full h-auto rounded">
                 </div>
                 
-                <div class="bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
+                <div class="game-screenshot bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
                     <img src="images/FnARPk.gif" alt="GetYoked Gameplay Screenshot 4" class="w-full h-auto rounded">
                 </div>
 
-                <div class="bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
+                <div class="game-screenshot bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
                     <img src="images/fz4nxT.gif" alt="GetYoked Gameplay Screenshot 2" class="w-full h-auto rounded">
                 </div>
                 
-                <div class="bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
+                <div class="game-screenshot bg-apple-dark p-2 rounded-lg shadow-lg overflow-hidden">
                     <img src="images/Ho9Ba3.gif" alt="GetYoked Gameplay Screenshot 1" class="w-full h-auto rounded">
                 </div>
-                
-                
-                
-               
             </div>
         </section>
         
         <!-- Game Features -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 text-apple-white border-b border-apple-gray pb-2">Game Features</h2>
+            <h2 class="text-3xl font-bold mb-6 text-apple-white">Game Features</h2>
+            <div class="heading-divider"></div>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-apple-dark p-6 rounded-lg shadow-lg">
@@ -175,28 +413,56 @@
         
         <!-- Game Description -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 text-apple-white border-b border-apple-gray pb-2">About GetYoked</h2>
+            <h2 class="text-3xl font-bold mb-6 text-apple-white">About GetYoked</h2>
+            <div class="heading-divider"></div>
             
-            <div class="bg-apple-dark p-8 rounded-lg shadow-lg">
-                <p class="text-apple-gray mb-4">GetYoked is an addictive roguelike deckbuilder game where you take on the role of an aspiring bodybuilder. Your goal is to build the perfect physique by strategically playing workout cards, managing fatigue, and making smart decisions about your training regimen.</p>
-                
-                <p class="text-apple-gray mb-4">In GetYoked, you'll face increasingly difficult competitions that require specific muscle development. Will you become a balanced bodybuilder with proportional development, or will you specialize in certain muscle groups to create a unique physique?</p>
-                
-                <p class="text-apple-gray">The game features intuitive controls, engaging gameplay mechanics, and a progression system that keeps you coming back for more. With each run, you'll learn new strategies and unlock new cards to help you on your journey to becoming the ultimate bodybuilding champion.</p>
+            <div class="bg-apple-dark no-glow p-4 rounded-lg shadow-lg">
+                <div class="about-grid">
+                    <div class="about-column orange-top-border">
+                        <h3 class="text-xl font-bold mb-4 text-apple-highlight">The Game</h3>
+                        <p class="text-apple-gray">GetYoked is an addictive roguelike deckbuilder game where you take on the role of an aspiring bodybuilder. Your goal is to build the perfect physique by strategically playing workout cards.</p>
+                    </div>
+                    
+                    <div class="about-column orange-top-border">
+                        <h3 class="text-xl font-bold mb-4 text-apple-highlight">The Challenge</h3>
+                        <p class="text-apple-gray">In GetYoked, you'll face increasingly difficult competitions that require specific muscle development. Will you become a balanced bodybuilder or specialize in certain muscle groups?</p>
+                    </div>
+                    
+                    <div class="about-column orange-top-border">
+                        <h3 class="text-xl font-bold mb-4 text-apple-highlight">The Experience</h3>
+                        <p class="text-apple-gray">The game features intuitive controls, engaging gameplay mechanics, and a progression system that keeps you coming back for more.</p>
+                    </div>
+                </div>
             </div>
         </section>
         
         <!-- How to Play -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 text-apple-white border-b border-apple-gray pb-2">How to Play</h2>
+            <h2 class="text-3xl font-bold mb-6 text-apple-white">How to Play</h2>
+            <div class="heading-divider"></div>
             
-            <div class="bg-apple-dark p-8 rounded-lg shadow-lg">
-                <ol class="list-decimal list-inside space-y-4 text-apple-gray">
-                    <li><span class="font-bold text-apple-white">Build Your Deck:</span> Collect workout cards, supplements, and rest strategies to create your perfect training regimen.</li>
-                    <li><span class="font-bold text-apple-white">Manage Fatigue:</span> Balance intense workouts with proper rest to avoid injury and maximize gains.</li>
-                    <li><span class="font-bold text-apple-white">Win Competitions:</span> Meet the minimum muscle requirements for each competition to progress through the game.</li>
-                    <li><span class="font-bold text-apple-white">Strategic Choices:</span> Decide which muscle groups to prioritize based on competition requirements and your personal strategy.</li>
-                    <li><span class="font-bold text-apple-white">Unlock New Cards:</span> As you progress, you'll unlock new workout cards and supplements to enhance your training options.</li>
+            <div class="bg-apple-dark no-glow p-4 rounded-lg shadow-lg">
+                <ol class="how-to-play-list">
+                    <li>
+                        <span class="font-bold text-apple-highlight">Build Your Deck:</span>
+                        Collect workout cards, supplements, and rest strategies to create your perfect training regimen.
+                    </li>
+                    <li>
+                        <span class="font-bold text-apple-highlight">Manage Fatigue:</span>
+                        Balance intense workouts with proper rest to avoid injury and maximize gains.
+                    </li>
+                    <li>
+                        <span class="font-bold text-apple-highlight">Win Competitions:</span>
+                        Meet the minimum muscle requirements for each competition to progress through the game.
+                    </li>
+                    <li>
+                        <span class="font-bold text-apple-highlight">Strategic Choices:</span>
+                        Decide which muscle groups to prioritize based on competition requirements and your personal strategy.
+                    </li>
+                    <li>
+                        <span class="font-bold text-apple-highlight">Unlock New Cards:</span>
+                        As you progress, you'll unlock new workout cards and supplements to enhance your training options.
+                    </li>
                 </ol>
             </div>
         </section>
@@ -223,6 +489,19 @@
             const gameContainer = document.getElementById('game-container');
             const gameIframe = document.getElementById('game-iframe');
             const closeButton = document.getElementById('close-button');
+            
+            // 添加按钮点击微交互效果
+            playButton.addEventListener('mousedown', function() {
+                playButton.classList.add('play-button-active');
+            });
+            
+            playButton.addEventListener('mouseup', function() {
+                playButton.classList.remove('play-button-active');
+            });
+            
+            playButton.addEventListener('mouseleave', function() {
+                playButton.classList.remove('play-button-active');
+            });
             
             playButton.addEventListener('click', function() {
                 gameContainer.style.display = 'block';
